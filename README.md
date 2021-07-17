@@ -9,7 +9,7 @@ This is my attempt to learn some **aspects** of grapth theory for practical reas
 
 A vertex is a dot in the graph that could represent an intersection of streets, a land mass, or a general location, like “work” or “school”. Vertices are often connected by edges. Note that vertices only occur when a dot is explicitly placed, not whenever two edges cross. Imagine a freeway overpass—the freeway and side street cross, but it is not possible to change from the side street to the freeway at that point, so there is no intersection and no vertex would be placed.
 
-### Edges
+### Edge
 
 Edges connect pairs of vertices. An edge can represent a physical connection between locations, like a street, or simply that a route connecting the two locations exists, like an airline flight.
 
