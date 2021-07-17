@@ -1,5 +1,5 @@
 
-# Graph Learning
+# Graph Theory Learning
 
 This is my attempt to learn some **aspects** of grapth theory for practical reasons. In my view there are plenty of practical real world problems that can be reasoned about by framing it as a graphs and applying graph theoretical solutions to it. I am not, nor will pretend to be good at math, but I understand that there will be aspects of graph theory that goes beyond of just logic (*which I am decent at*) and require some math knowledge. I am willing to do a serious attempt at learning this aspects if this will enable me to unlock the reasoning for the specifc graph theory aspect that I am exploring at the moment.
 
@@ -32,6 +32,15 @@ A path is a sequence of vertices using the edges. Usually we are interested in a
 
 A circuit is a path that begins and ends at the same vertex. A circuit starting and ending at vertex A is shown below.  
 ![Graph Circuit](https://s3-us-west-2.amazonaws.com/courses-images-archive-read-only/wp-content/uploads/sites/282/2016/01/20155123/Fig2_5_14.png "Graph Circuit")
+
+### Connected
+
+A graph is connected if there is a path from any vertex to any other vertex. Every graph drawn so far has been connected. The graph below is disconnected; there is no way to get from the vertices on the left to the vertices on the right.
+![Connected Graph](https://s3-us-west-2.amazonaws.com/courses-images-archive-read-only/wp-content/uploads/sites/282/2016/01/20155124/Fig2_5_15.png "Connected Graph")
+
+### Weights
+
+Depending upon the problem being solved, sometimes weights are assigned to the edges. The weights could represent the distance between two locations, the travel time, or the travel cost. It is important to note that the distance between vertices in a graph does not necessarily correspond to the weight of an edge.
 
 ## Learning Resources
 
