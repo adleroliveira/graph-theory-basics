@@ -15,16 +15,23 @@ Edges connect pairs of vertices. An edge can represent a physical connection bet
 
 ### Loop
 
-A loop is a special type of edge that connects a vertex to itself. Loops are not used much in street network graphs.
-![Loop] (<https://s3-us-west-2.amazonaws.com/courses-images-archive-read-only/wp-content/uploads/sites/282/2016/01/20155118/Fig2_5_7.png> "Loop")
+A loop is a special type of edge that connects a vertex to itself. Loops are not used much in street network graphs.  
+![Graph Loop](https://s3-us-west-2.amazonaws.com/courses-images-archive-read-only/wp-content/uploads/sites/282/2016/01/20155118/Fig2_5_7.png "Graph Loop")
 
 ### Degree of a Vertex
 
-The degree of a vertex is the number of edges meeting at that vertex. It is possible for a vertex to have a degree of zero or larger.
+The degree of a vertex is the number of edges meeting at that vertex. It is possible for a vertex to have a degree of zero or larger.  
+![Graph Degree](https://s3-us-west-2.amazonaws.com/courses-images-archive-read-only/wp-content/uploads/sites/282/2016/01/20155120/Fig2_5_11.png "Graph Degree")
 
 ### Path
 
 A path is a sequence of vertices using the edges. Usually we are interested in a path between two vertices. For example, a path from vertex A to vertex M is shown below. It is one of many possible paths in this graph.
+![Graph Path](https://s3-us-west-2.amazonaws.com/courses-images-archive-read-only/wp-content/uploads/sites/282/2016/01/20155122/Fig2_5_13.png "Graph Path")
+
+### Circuit
+
+A circuit is a path that begins and ends at the same vertex. A circuit starting and ending at vertex A is shown below.  
+![Graph Circuit](https://s3-us-west-2.amazonaws.com/courses-images-archive-read-only/wp-content/uploads/sites/282/2016/01/20155123/Fig2_5_14.png "Graph Circuit")
 
 ## Learning Resources
 
