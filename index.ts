@@ -6,6 +6,7 @@ const flights = new BasicGraph<City>()
 flights.connect("LA", "Seattle", 70)
 flights.connect("LA", "Dallas", 150)
 flights.connect("LA", "Atlanta", 170)
+flights.connect("NY", "Austin", 200)
 flights.connect("LA", "Chicago", 100)
 flights.connect("Chicago", "Seattle", 145)
 flights.connect("Chicago", "Dallas", 165)
@@ -21,7 +22,16 @@ console.log("VertexCount", flights.vertexCount())
 // What is the degree of the vertex representing LA?
 console.log("Degrees of LA", flights.degree("LA"))
 console.log("Neighbours of LA", flights.neighbours("LA"))
+console.log("DFS Ordering from Seattle", flights.dfs_order("Seattle"))
+console.log("DFS Ordering from NY", flights.dfs_order("NY"))
+
 console.log(flights)
+
+
+const components: BasicGraph<City>[] = flights.components()
+console.log("Graph Components", components)
+console.log("Graph Component[1] Neighbours of NY", components[1].neighbours("NY"))
+
 
 // If you fly from Seattle to Dallas to Atlanta, is that a path or a circuit?
 
