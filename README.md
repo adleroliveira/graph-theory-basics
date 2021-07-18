@@ -5,7 +5,7 @@ This is my attempt to learn some **aspects** of grapth theory for practical reas
 
 ## Definitions
 
-### Vertex
+### Vertex/Node
 
 A vertex is a dot in the graph that could represent an intersection of streets, a land mass, or a general location, like “work” or “school”. Vertices are often connected by edges. Note that vertices only occur when a dot is explicitly placed, not whenever two edges cross. Imagine a freeway overpass—the freeway and side street cross, but it is not possible to change from the side street to the freeway at that point, so there is no intersection and no vertex would be placed.
 
@@ -42,6 +42,19 @@ A graph is connected if there is a path from any vertex to any other vertex. Eve
 
 Depending upon the problem being solved, sometimes weights are assigned to the edges. The weights could represent the distance between two locations, the travel time, or the travel cost. It is important to note that the distance between vertices in a graph does not necessarily correspond to the weight of an edge.
 
+### Graph Data Structure Representations
+
+There are three main graph datastructure representations:
+
+- Adjacency Matrix
+- Edge Set
+- Adjacency List
+
 ## Learning Resources
 
 - Graph Theory Basics (<https://courses.lumenlearning.com/wmopen-mathforliberalarts/chapter/introduction-graph-theory/>)
+- Introduction to Graph Theory: A Computer Science Perspective (<https://www.youtube.com/watch?v=LFKZLXVO-Dg>)
+
+## TODO
+
+- Implement a Sudoku Solver using Graphs

@@ -1,3 +1,18 @@
+type Some<T> = T
+type None = undefined
+type Optional<T> = Some<T> | None
+
+interface Graph<T> {
+    degree: (arg0: T) => number
+    neighbours: (arg0: T) => T[]
+    path: (arg0: T, arg1: T) => Edge<T>[]
+    pathLength: (arg0: T, arg1: T) => number
+    isCycle: (arg0: T, arg1: T) => boolean
+    isConnected: (arg0: T, arg1: T) => boolean
+    isGraphConnected: () => boolean
+    components: () => Graph<T>[]
+}
+
 export class Edge<T> {
     public left: T
     public right: T
@@ -12,85 +27,83 @@ export class Edge<T> {
 
 type GraphEntry<T> = { vertex: T, edges: Edge<T>[] }
 
-export class Graph<T> {
-    private _vertices: Set<T> = new Set()
-    private _edges: Edge<T>[] = []
+export class BasicGraph<T> implements Graph<T> {
+    private _vertices: Array<number[]> = new Array<number[]>()
+    private _values: T[] = new Array()
 
-    public loadVertices(vertices: T[]): void {
-        vertices.forEach(v => {
-            this._vertices.add(v)
-        })
+    public degree(vertex: T): number {
+        const i = this._values.indexOf(vertex)
+        if (i === -1) throw new Error("Vertex Not Found")
+        return this._vertices[i].length
     }
 
-    public connect(a: T, b: T, weight = 0) {
-        if (!this._vertices.has(a)) this._vertices.add(a)
-        if (!this._vertices.has(b)) this._vertices.add(b)
-        // Does graph edges have directions????????
-        // Assuming they don't, let's check if the same edge already existis from both A, and B
-        if (!this.edgeExists(a, b)) {
-            this._edges.push(new Edge(a, b, weight))
+    public neighbours(vertex: T): T[] {
+        const i = this._values.indexOf(vertex)
+        if (i === -1) throw new Error("Vertex Not Found")
+        return this._vertices[i].map(v => this._values[v])
+    }
+
+    public has(v: T): boolean {
+        return this.indexOf(v) !== -1
+    }
+
+    public connect(v1: T, v2: T, _weight: number = 0): void {
+        if (!this.has(v1)) {
+            this._values.push(v1)
+            this._vertices.push([])
         }
+
+        if (!this.has(v2)) {
+            this._values.push(v2)
+            this._vertices.push([])
+        }
+
+        const i1 = this.indexOf(v1)
+        const i2 = this.indexOf(v2)
+
+        if (!this._isConnected(i1, i2)) this._vertices[i1].push(i2)
+        if (!this._isConnected(i2, i1)) this._vertices[i2].push(i1)
     }
 
-    public edgeExists(a:T, b:T): boolean {
-        this._edges.forEach(e => {
-            //TODO: Make sure it also works with (===)
-            if((e.left == a && e.right == b) || (e.left == b && e.right == a)) return true
-        })
-        return false
+    public path(v1: T, v2: T): Edge<T>[] {
+        throw new Error("Not Implemented")
+    }
+
+    public pathLength(v1: T, v2: T): number {
+        return this.path(v1, v2).length
+    }
+
+    public isCycle(v1: T, v2: T): boolean {
+        throw new Error("Not Implemented")
+    }
+
+    public isConnected(v1: T, v2: T): boolean {
+        throw new Error("Not Implemented")
+    }
+
+    public isGraphConnected(): boolean {
+        throw new Error("Not Implemented")
+    }
+
+    public components(): Graph<T>[] {
+        throw new Error("Not Implemented")
+    }
+
+    public vertexCount(): number {
+        return this._vertices.length
     }
 
     public edgeCount(): number {
-        return this._edges.length
-    }
-    
-    public vertexCount(): number {
-        return this._vertices.size
-    }
-    
-    public degree(vertex: T): number {
-        if(!this._vertices.has(vertex)) throw new Error("Vertex not found")
-        return this._edges.reduce((acc: number, e: Edge<T>) => {
-            if (e.left == vertex || e.right == vertex) return acc + 1
-            return acc
-        }, 0)
+        return this._vertices.reduce( (acc: number, edges: number[]) => {
+            return acc + edges.length
+        }, 0) / 2
     }
 
-    public isConnected(): boolean {
-        throw new Error("Not Implemented")
+    private indexOf(vertex: T): number {
+        return this._values.indexOf(vertex)
     }
 
-
-    public pathBetween(a: T, b: T): Edge<T>[] {
-        throw new Error("Not Implemented")
+    private _isConnected(a: number, b: number): boolean {
+        return this._vertices[a].indexOf(b) !== -1
     }
 }
-
-
-type City = string
-const flights = new Graph<City>()
-// flights.loadVertices(["LA", "Seattle", "Dallas", "Chicago", "Atlanta"])
-flights.connect("LA", "Seattle", 70)
-flights.connect("LA", "Dallas", 150)
-flights.connect("LA", "Atlanta", 170)
-flights.connect("LA", "Chicago", 100)
-flights.connect("Chicago", "Seattle", 145)
-flights.connect("Chicago", "Dallas", 165)
-flights.connect("Chicago", "Atlanta", 75)
-flights.connect("Atlanta", "Seattle", 140)
-flights.connect("Atlanta", "Dallas", 85)
-flights.connect("Dallas", "Seattle", 120)
-
-// How many vertices and edges does the graph have?
-console.log("EdgeCount", flights.edgeCount())
-console.log("VertexCount", flights.vertexCount())
-
-// What is the degree of the vertex representing LA?
-console.log("Degrees of LA", flights.degree("LA"))
-
-// If you fly from Seattle to Dallas to Atlanta, is that a path or a circuit?
-
-// Is the graph connected?
-
-// If you fly from LA to Chicago to Dallas to LA, is that a path or a circuit.
-
