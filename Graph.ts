@@ -94,10 +94,14 @@ export class BasicGraph<T> implements Graph<T> {
     }
 
     public isGraphConnected(): boolean {
-        throw new Error("Not Implemented")
+        if (this.vertexCount() == 0) return true
+        return this._do_dfs(0, []).length == this.vertexCount()
     }
 
     public components(): BasicGraph<T>[] {
+        // I am well aware this algorithm is not the most optimized for extracting components
+        // In fact, I didn't even look it up what the best implementation is. I just coded one that works
+        // I might come back to this in the future and improve it to be more efficient.
         const components:  BasicGraph<T>[] = []
         if (this.vertexCount() === 0) {
             components.push(new BasicGraph<T>())

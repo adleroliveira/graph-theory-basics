@@ -6,7 +6,13 @@ const flights = new BasicGraph<City>()
 flights.connect("LA", "Seattle", 70)
 flights.connect("LA", "Dallas", 150)
 flights.connect("LA", "Atlanta", 170)
+
+console.log("Is Graph Connected #1", flights.isGraphConnected())
+
 flights.connect("NY", "Austin", 200)
+
+console.log("Is Graph Connected #2", flights.isGraphConnected())
+
 flights.connect("LA", "Chicago", 100)
 flights.connect("Chicago", "Seattle", 145)
 flights.connect("Chicago", "Dallas", 165)
