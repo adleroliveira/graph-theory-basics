@@ -1,5 +1,3 @@
-
-
 interface Graph<T> {
     degree: (arg0: T) => number
     neighbours: (arg0: T) => T[]
@@ -112,10 +110,10 @@ export class BasicGraph<T> implements Graph<T> {
             const g = new BasicGraph<T>()
             const ordering_buffer: number[] = []
             const ordering = this._do_dfs(pointerIdx, ordering_buffer)
-            for(let j=0;j<ordering.length;j++) {
+            for(let j=0; j<ordering.length; j++) {
                 const value = this._values[ordering[j]]
                 const neighbours = this._neighbours(ordering[j])
-                for(let k=0;k<neighbours.length;k++) {
+                for(let k=0; k<neighbours.length; k++) {
                     g.connect(value, this._values[neighbours[k]])
                 }
             }

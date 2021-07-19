@@ -54,6 +54,7 @@ There are three main graph datastructure representations:
 
 - Graph Theory Basics (<https://courses.lumenlearning.com/wmopen-mathforliberalarts/chapter/introduction-graph-theory/>)
 - Introduction to Graph Theory: A Computer Science Perspective (<https://www.youtube.com/watch?v=LFKZLXVO-Dg>)
+- Breadth First Search (BFS): Visualized and Explained (<https://www.youtube.com/watch?v=xlVX7dXLS64>)
 
 ## TODO
 
